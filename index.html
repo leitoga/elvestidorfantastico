@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Vestidor Fantástico — Cosplays Hechos Realidad</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ===== NAV ===== -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="#inicio" class="brand">
+        <img src="assets/logo.png" alt="El Vestidor Fantástico" />
+      </a>
+      <ul>
+        <li><a href="#inicio" class="is-active" data-section="inicio">INICIO</a></li>
+        <li><a href="#cosplays" data-section="cosplays">COSPLAYS</a></li>
+        <li><a href="#disfraces" data-section="disfraces">DISFRACES</a></li>
+        <li><a href="#indumentaria" data-section="indumentaria">INDUMENTARIA</a></li>
+        <li><a href="#trabajos" data-section="trabajos">NUESTROS TRABAJOS</a></li>
+        <li><a href="#envios" data-section="envios">ENVÍOS</a></li>
+        <li><a href="#contacto" data-section="contacto">CONTACTO</a></li>
+      </ul>
+      <div class="icons">
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <!-- ===== HERO / INICIO ===== -->
+  <section class="hero" id="inicio">
+    <div class="cosmic-bg" data-parallax></div>
+    <div class="shooting-stars" id="hero-shooting"></div>
+    <div class="stars" id="hero-stars"></div>
+
+    <svg class="paint-blob drift-blob" style="top:-30px;left:-60px;width:540px;height:380px;opacity:.55" viewBox="0 0 540 380">
+      <path d="M40 120 C 80 40, 200 20, 320 60 C 440 100, 500 200, 460 280 C 420 340, 260 360, 160 320 C 60 280, 0 200, 40 120 Z" fill="#b8267a"/>
+    </svg>
+    <svg class="paint-blob drift-blob" style="top:60px;right:-80px;width:520px;height:420px;opacity:.5; animation-delay:-6s" viewBox="0 0 520 420">
+      <path d="M60 80 C 200 30, 380 80, 460 180 C 520 280, 460 380, 320 380 C 180 380, 40 320, 30 220 C 20 140, 30 100, 60 80 Z" fill="#6c2a9c"/>
+    </svg>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1 class="brush reveal">
+          <span style="display:block">COSPLAYS</span>
+          <span style="display:block">HECHOS</span>
+          <span class="pink glow-pink">REALIDAD</span>
+        </h1>
+        <p class="sub reveal delay-1">Trajes de alta calidad, diseñados para brillar en cada aventura.</p>
+        <div class="cta-row reveal delay-2">
+          <a class="brush-btn" href="#cosplays">
+            <span>DESCUBRÍ LAS COLECCIONES</span>
+            <span class="star-deco">✦</span>
+          </a>
+          <svg class="swirl-arrow" viewBox="0 0 100 100" fill="none">
+            <path d="M20 30 C 40 10, 70 20, 75 45 C 78 65, 55 75, 45 70 M 45 70 L 55 65 M 45 70 L 50 80"
+              stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <div class="hero-aura"></div>
+        <div class="hero-morph" id="hero-morph"></div>
+        <div id="wand-sparkles" style="position:absolute; left:18%; top:40%; width: 200px; height: 200px; z-index: 4; pointer-events:none;"></div>
+        <div class="magic-badge">
+          HECHO CON<br/>MAGIA PARA<br/>HÉROES REALES
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="features">
+    <div class="features-inner">
+      <div class="features-lead reveal">
+        <h2>Expresá tu<br/>personaje</h2>
+        <p>Creamos cada detalle para que seas inolvidable.</p>
+      </div>
+      <div class="features-icons">
+        <div class="feat reveal delay-1">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M50 14 C 47 14 45 17 45 20 C 45 23 47 26 50 26 C 53 26 55 23 55 20 C 55 17 53 14 50 14 Z M 50 26 L 50 36 M 36 36 L 64 36 L 78 86 L 22 86 Z M 30 60 L 70 60"/>
+          </svg>
+          <span class="label">CONFECCIÓN<br/>A MEDIDA</span>
+        </div>
+        <div class="feat reveal delay-2">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 70 L14 38 L34 38 L34 30 L62 30 L62 38 L86 38 L86 70 Z M 70 50 L 70 64 M 64 64 L 76 64 M 22 76 L 78 76 L 78 84 L 22 84 Z"/>
+          </svg>
+          <span class="label">ALTA<br/>CALIDAD</span>
+        </div>
+        <div class="feat reveal delay-3">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M30 26 C 22 36, 18 50, 22 64 C 26 78, 36 86, 50 86 C 64 86, 76 78, 80 64 C 84 50, 80 36, 70 26 C 60 18, 40 18, 30 26 Z M 28 50 C 22 60, 26 76, 38 84 M 72 50 C 78 60, 74 76, 62 84 M 50 18 C 56 22, 60 30, 60 38"/>
+          </svg>
+          <span class="label">ATENCIÓN<br/>PERSONALIZADA</span>
+        </div>
+        <div class="feat reveal delay-4">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M40 16 L60 16 L60 84 L40 84 Z M 40 24 L 60 24 M 40 32 L 60 32 M 40 40 L 60 40 M 40 48 L 60 48 M 40 56 L 60 56 M 40 64 L 60 64 M 40 72 L 60 72 M 30 84 L 70 84"/>
+          </svg>
+          <span class="label">MATERIALES<br/>PREMIUM</span>
+        </div>
+        <div class="feat reveal delay-4">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M50 12 L58 28 L76 30 L62 42 L66 60 L50 50 L34 60 L38 42 L24 30 L42 28 Z M 50 50 L 30 86"/>
+          </svg>
+          <span class="label">MAGIA EN<br/>CADA DETALLE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COLLECTIONS (preview on home) ===== -->
+  <section class="collections">
+    <div class="stars" id="coll-stars" style="opacity:.45"></div>
+    <div class="collections-inner">
+      <div class="collections-header reveal">
+        <span class="brush-banner">ELEGÍ TU PRÓXIMA AVENTURA ✦</span>
+      </div>
+      <div class="cards-row">
+        <a class="card reveal delay-1" href="#cosplays">
+          <div class="photo"><img src="assets/card-1-magical.png" alt="Magical Girl" /></div>
+          <span class="label-tag">MAGICAL GIRL</span>
+        </a>
+        <a class="card reveal delay-1" href="#cosplays">
+          <div class="photo"><img src="assets/card-2-anime.png" alt="Anime" /></div>
+          <span class="label-tag">ANIME</span>
+        </a>
+        <a class="card reveal delay-2" href="#cosplays">
+          <div class="photo"><img src="assets/card-3-videojuegos.png" alt="Videojuegos" /></div>
+          <span class="label-tag">VIDEOJUEGOS</span>
+        </a>
+        <a class="card reveal delay-3" href="#cosplays">
+          <div class="photo"><img src="assets/card-4-series.png" alt="Series y películas" /></div>
+          <span class="label-tag">SERIES Y PELÍCULAS</span>
+        </a>
+        <a class="card reveal delay-4" href="#indumentaria">
+          <div class="photo"><img src="assets/card-5-accesorios.png" alt="Accesorios" /></div>
+          <span class="label-tag">ACCESORIOS</span>
+        </a>
+      </div>
+      <a class="see-all reveal" href="#cosplays">
+        VER TODAS LAS COLECCIONES <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== STORY ===== -->
+  <section class="story">
+    <div class="section-divider-top from-cream" aria-hidden="true"></div>
+    <div class="cosmic-bg" data-parallax></div>
+    <div class="stars" id="story-stars"></div>
+
+    <svg class="paint-blob drift-blob" style="bottom:-40px;left:-60px;width:480px;height:340px;opacity:.45" viewBox="0 0 480 340">
+      <path d="M40 120 C 80 40, 200 20, 320 60 C 440 100, 460 200, 420 260 C 380 320, 240 320, 140 300 C 60 280, 10 200, 40 120 Z" fill="#6c2a9c"/>
+    </svg>
+
+    <div class="story-inner">
+      <div class="story-copy reveal">
+        <h2>NO ES SOLO UN TRAJE,<br/>ES <span class="pink">TU HISTORIA.</span></h2>
+        <div class="note">
+          Cada costura, cada material y cada detalle están pensados para acompañarte en esos momentos que recordás para siempre.
+        </div>
+      </div>
+      <div class="polaroids reveal delay-2">
+        <svg class="heart-doodle" viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M25 42 C 10 30, 4 20, 12 12 C 18 6, 25 12, 25 18 C 25 12, 32 6, 38 12 C 46 20, 40 30, 25 42 Z"/>
+        </svg>
+        <div class="polaroid"><div class="tape"></div><img src="assets/gallery-1.png" alt="Detalle bordado" /></div>
+        <div class="polaroid"><div class="tape"></div><img src="assets/gallery-2.png" alt="Taller de costura" /></div>
+        <div class="polaroid"><div class="tape"></div><img src="assets/gallery-3.png" alt="Boceto diseño" /></div>
+        <div class="polaroid"><div class="tape"></div><img src="assets/gallery-4.png" alt="Cosplay terminado" /></div>
+      </div>
+    </div>
+    <div class="section-divider thin" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== COSPLAYS ===== -->
+  <section class="land-section cream" id="cosplays">
+
+    <div class="stars" data-stars="22"></div>
+    <svg class="paint-blob drift-blob" style="top:10%;left:-80px;width:420px;height:320px;opacity:.4" viewBox="0 0 420 320">
+      <path d="M40 120 C 80 40, 200 20, 320 60 C 400 100, 410 200, 360 260 C 300 320, 160 310, 80 280 C 20 250, 10 180, 40 120 Z" fill="#b8267a"/>
+    </svg>
+    <div class="inner">
+      <span class="crumb reveal">✦ EXPLORÁ NUESTRAS CREACIONES ✦</span>
+      <h2 class="reveal delay-1">COSPLAYS<span class="pink glow-pink">MÁGICOS</span></h2>
+      <p class="lead reveal delay-2">Personajes hechos a medida, listos para tu próxima aventura.</p>
+      <div class="placeholder reveal delay-3">
+        <span class="pill">PRÓXIMAMENTE</span>
+        <p>Este espacio está esperando su contenido mágico ✨<br/>Pronto vas a ver todos los <strong>cosplays</strong> disponibles.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DISFRACES ===== -->
+  <section class="land-section dark" id="disfraces">
+    <div class="section-divider-top from-cream" aria-hidden="true"></div>
+    <div class="cosmic-bg" data-parallax></div>
+    <div class="stars" data-stars="22"></div>
+    <div class="inner">
+      <span class="crumb reveal">✦ PARA QUE TODOS TE MIREN ✦</span>
+      <h2 class="reveal delay-1">DISFRACES<span class="pink">ÚNICOS</span></h2>
+      <p class="lead reveal delay-2">Diseños originales para fiestas, eventos y carnavales.</p>
+      <div class="placeholder reveal delay-3">
+        <span class="pill">PRÓXIMAMENTE</span>
+        <p>Este espacio está esperando su contenido mágico ✨<br/>Pronto vas a ver todos los <strong>disfraces</strong> disponibles.</p>
+      </div>
+    </div>
+    <div class="section-divider thin" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== INDUMENTARIA ===== -->
+  <section class="land-section cream" id="indumentaria">
+    <div class="stars" data-stars="22"></div>
+    <svg class="paint-blob drift-blob" style="top:30%;right:-80px;width:420px;height:320px;opacity:.4; animation-delay:-4s" viewBox="0 0 420 320">
+      <path d="M40 120 C 80 40, 200 20, 320 60 C 400 100, 410 200, 360 260 C 300 320, 160 310, 80 280 C 20 250, 10 180, 40 120 Z" fill="#6c2a9c"/>
+    </svg>
+    <div class="inner">
+      <span class="crumb reveal">✦ TU LOOK DE TODOS LOS DÍAS ✦</span>
+      <h2 class="reveal delay-1">INDUMENTARIA<span class="pink glow-pink">FANTÁSTICA</span></h2>
+      <p class="lead reveal delay-2">Prendas y accesorios inspirados en el mundo geek.</p>
+      <div class="placeholder reveal delay-3">
+        <span class="pill">PRÓXIMAMENTE</span>
+        <p>Este espacio está esperando su contenido mágico ✨<br/>Pronto vas a ver toda la <strong>indumentaria</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NUESTROS TRABAJOS ===== -->
+  <section class="land-section dark" id="trabajos">
+    <div class="section-divider-top from-cream" aria-hidden="true"></div>
+    <div class="cosmic-bg" data-parallax></div>
+    <div class="stars" data-stars="22"></div>
+    <div class="inner">
+      <span class="crumb reveal">✦ UN VISTAZO AL TALLER ✦</span>
+      <h2 class="reveal delay-1">NUESTROS<span class="pink">TRABAJOS</span></h2>
+      <p class="lead reveal delay-2">Cada pieza tiene su historia. Mirá lo que hicimos.</p>
+      <div class="placeholder reveal delay-3">
+        <span class="pill">PRÓXIMAMENTE</span>
+        <p>Este espacio está esperando su contenido mágico ✨<br/>Pronto vas a ver la galería de <strong>nuestros trabajos</strong>.</p>
+      </div>
+    </div>
+    <div class="section-divider thin" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== ENVÍOS ===== -->
+  <section class="land-section cream" id="envios">
+    <div class="stars" data-stars="22"></div>
+    <svg class="paint-blob drift-blob" style="bottom:-50px;left:-60px;width:420px;height:320px;opacity:.4" viewBox="0 0 420 320">
+      <path d="M40 120 C 80 40, 200 20, 320 60 C 400 100, 410 200, 360 260 C 300 320, 160 310, 80 280 C 20 250, 10 180, 40 120 Z" fill="#b8267a"/>
+    </svg>
+    <div class="inner">
+      <span class="crumb reveal">✦ LLEGAMOS A TODOS LADOS ✦</span>
+      <h2 class="reveal delay-1">ENVÍOS<span class="pink glow-pink">A TODO EL PAÍS</span></h2>
+      <p class="lead reveal delay-2">Información de envíos, plazos y zonas de cobertura.</p>
+      <div class="placeholder reveal delay-3">
+        <span class="pill">PRÓXIMAMENTE</span>
+        <p>Este espacio está esperando su contenido mágico ✨<br/>Pronto vas a ver los detalles de <strong>envíos</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section class="land-section dark" id="contacto" style="background: radial-gradient(ellipse 60% 60% at 30% 30%, rgba(184,38,122,0.25), transparent 60%), radial-gradient(ellipse 60% 60% at 80% 70%, rgba(108,42,156,0.35), transparent 60%), linear-gradient(180deg, #220c46 0%, #1a0934 100%);">
+    <div class="section-divider-top from-cream" aria-hidden="true"></div>
+    <div class="cosmic-bg" data-parallax></div>
+    <div class="stars" data-stars="32"></div>
+    <div class="inner">
+      <span class="crumb reveal">✦ ESCRIBINOS ✦</span>
+      <h2 class="reveal delay-1">CONTACTO<span class="pink glow-pink">✦</span></h2>
+      <p class="lead reveal delay-2">Conversemos sobre tu próximo proyecto mágico.</p>
+      <form class="contact-card reveal delay-3" onsubmit="event.preventDefault(); this.reset(); this.querySelector('.send-btn span:first-child').textContent='¡MENSAJE ENVIADO!';">
+        <div class="row">
+          <input type="text" placeholder="Tu nombre" required />
+          <input type="email" placeholder="Tu email mágico" required />
+        </div>
+        <textarea placeholder="Contanos qué cosplay, disfraz o indumentaria querés..." required></textarea>
+        <div class="submit-row">
+          <button class="brush-btn send-btn" type="submit">
+            <span>ENVIAR MENSAJE</span>
+            <span class="star-deco">✦</span>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="section-divider thin" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="cosmic-bg" data-parallax></div>
+    <div class="stars" id="foot-stars" style="opacity:.55"></div>
+    <div class="footer-inner">
+      <div class="footer-newsletter">
+        <h3>✦ SUMATE AL VESTIDOR</h3>
+        <p>Enterate primero de lanzamientos, promos y eventos mágicos ✨</p>
+        <form onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('input').placeholder='¡Listo! Te avisamos pronto ✨';">
+          <input type="email" placeholder="Tu email mágico" required />
+          <button type="submit" aria-label="Suscribirse">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+      <div class="footer-social">
+        <h3>SEGUINOS EN NUESTRAS REDES</h3>
+        <div class="row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.5 2.5 4.5 5 5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M10 9.5v5l5-2.5-5-2.5Z" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M11 7c-3 0-5 2-5 5 0 1.5.5 2.5 1.5 3l-.8 4M12 14c2 0 3.5-1.5 3.5-3.5S14 7 12 7"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-logo">
+        <img src="assets/logo.png" alt="El Vestidor Fantástico" />
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JS ===== -->
+  <script>
+  // ---------- Brushy SECTION TRANSITIONS (disabled — using straight transitions) ----------
+  function _unused_buildBrushEdge(el){
+    const dir = el.classList.contains('c2d') ? 'c2d' : 'd2c';
+    const main = dir === 'd2c' ? '#f6efe1' : '#1a0934';  // color of NEXT section
+    const splash = '#b8267a';
+    const splash2 = '#e8338e';
+    const splash3 = '#ff7ab8';
+    const seed = Math.floor(Math.random()*1000);
+    const W = 1920, H = 220;
+
+    // wavy paint band path generator
+    function brushPath(baseY, amp, segments=6){
+      let d = `M 0 ${baseY}`;
+      const step = W / segments;
+      for (let i = 1; i <= segments; i++){
+        const x = i * step;
+        const cy = baseY + (Math.random()*amp*2 - amp);
+        const cpx1 = (i - 0.66) * step;
+        const cpx2 = (i - 0.33) * step;
+        const cpy1 = baseY + (Math.random()*amp*2 - amp);
+        const cpy2 = cy + (Math.random()*amp*2 - amp);
+        d += ` C ${cpx1} ${cpy1}, ${cpx2} ${cpy2}, ${x} ${cy}`;
+      }
+      d += ` L ${W} ${H} L 0 ${H} Z`;
+      return d;
+    }
+
+    // splatters/drips around the brush band
+    let splatters = '';
+    // tiny dots flying UP into prior section
+    for (let i = 0; i < 28; i++){
+      const cx = Math.random() * W;
+      const cy = 6 + Math.random() * 95;
+      const r = 1.5 + Math.random() * 4;
+      const col = [splash, splash2, splash3][Math.floor(Math.random()*3)];
+      const op = (0.45 + Math.random()*0.5).toFixed(2);
+      splatters += `<circle cx="${cx.toFixed(0)}" cy="${cy.toFixed(0)}" r="${r.toFixed(1)}" fill="${col}" opacity="${op}"/>`;
+    }
+    // bigger irregular blobs floating just above the band
+    for (let i = 0; i < 6; i++){
+      const cx = 80 + Math.random()*(W-160);
+      const cy = 30 + Math.random()*70;
+      const rx = 14 + Math.random()*24;
+      const ry = 6 + Math.random()*10;
+      const rot = (Math.random()*40 - 20).toFixed(0);
+      splatters += `<ellipse filter="url(#bx-s${seed})" cx="${cx.toFixed(0)}" cy="${cy.toFixed(0)}" rx="${rx.toFixed(0)}" ry="${ry.toFixed(0)}" fill="${splash}" opacity="0.7" transform="rotate(${rot} ${cx.toFixed(0)} ${cy.toFixed(0)})"/>`;
+    }
+    // paint drips falling DOWN into next section
+    let drips = '';
+    for (let i = 0; i < 10; i++){
+      const cx = 60 + Math.random()*(W-120);
+      const dripLen = 18 + Math.random()*40;
+      const top = 130 + Math.random()*30;
+      const sw = 2 + Math.random()*3;
+      const col = Math.random() > 0.5 ? splash : splash2;
+      drips += `<path d="M ${cx.toFixed(0)} ${top.toFixed(0)} q ${(Math.random()*8-4).toFixed(0)} ${(dripLen/2).toFixed(0)} 0 ${dripLen.toFixed(0)}" stroke="${col}" stroke-width="${sw.toFixed(1)}" stroke-linecap="round" fill="none" opacity="0.65"/>`;
+      // tiny round drop at end
+      drips += `<circle cx="${cx.toFixed(0)}" cy="${(top+dripLen).toFixed(0)}" r="${(sw+0.5).toFixed(1)}" fill="${col}" opacity="0.8"/>`;
+    }
+
+    const svg = `
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="bx-r${seed}" x="-5%" y="-15%" width="110%" height="130%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.011 0.05" numOctaves="2" seed="${seed}"/>
+            <feDisplacementMap in="SourceGraphic" scale="32"/>
+          </filter>
+          <filter id="bx-r2${seed}" x="-5%" y="-15%" width="110%" height="130%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.02 0.07" numOctaves="2" seed="${seed+7}"/>
+            <feDisplacementMap in="SourceGraphic" scale="20"/>
+          </filter>
+          <filter id="bx-s${seed}" x="-30%" y="-30%" width="160%" height="160%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="2" seed="${seed+15}"/>
+            <feDisplacementMap in="SourceGraphic" scale="10"/>
+          </filter>
+        </defs>
+        <!-- darkest magenta brushy band (rough top, deepest into prior section) -->
+        <path filter="url(#bx-r${seed})" d="${brushPath(120, 22, 7)}" fill="${splash}" opacity="0.95"/>
+        <!-- lighter pink overlay band -->
+        <path filter="url(#bx-r2${seed})" d="${brushPath(150, 16, 8)}" fill="${splash2}" opacity="0.7"/>
+        <!-- accent bright pink streak -->
+        <path filter="url(#bx-r2${seed})" d="${brushPath(170, 10, 9)}" fill="${splash3}" opacity="0.4"/>
+        <!-- final solid color matching the next section -->
+        <path filter="url(#bx-r${seed})" d="${brushPath(190, 14, 8)}" fill="${main}"/>
+        <!-- drips falling into next section -->
+        ${drips}
+        <!-- splatter dots above floating into prior section -->
+        ${splatters}
+      </svg>
+    `;
+    el.innerHTML = svg;
+  }
+  // (brush-edge and hero brushy bg disabled — clean straight transitions)
+  /* eslint-disable */ if (false) (function paintHeroBg(){
+    const wrap = document.getElementById('hero-brushes');
+    if (!wrap) return;
+    const W = 1920, H = 760;
+    const seed = 42;
+    const strokes = [
+      // [cx, cy, w, h, rot, color, opacity]
+      [220, 240, 540, 130, -22, '#b8267a', 0.55],
+      [380, 510, 620, 110, 14, '#6c2a9c', 0.60],
+      [1480, 220, 580, 140, 18, '#6c2a9c', 0.55],
+      [1620, 480, 560, 130, -10, '#b8267a', 0.50],
+      [960, 90, 500, 80, -3, '#e8338e', 0.30],
+      [880, 700, 700, 90, 6, '#b8267a', 0.45],
+    ];
+    let inner = `<defs>
+        <filter id="hbrush" x="-10%" y="-30%" width="120%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="2" seed="${seed}"/>
+          <feDisplacementMap in="SourceGraphic" scale="36"/>
+        </filter>
+        <filter id="hbrush2" x="-10%" y="-30%" width="120%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03 0.08" numOctaves="2" seed="${seed+3}"/>
+          <feDisplacementMap in="SourceGraphic" scale="18"/>
+        </filter>
+      </defs>`;
+    strokes.forEach(([cx,cy,w,h,rot,col,op], i) => {
+      inner += `<ellipse filter="url(#hbrush${i%2===0?'':'2'})" cx="${cx}" cy="${cy}" rx="${w/2}" ry="${h/2}" fill="${col}" opacity="${op}" transform="rotate(${rot} ${cx} ${cy})"/>`;
+    });
+    // scattered loose dribbles
+    for (let i = 0; i < 14; i++){
+      const cx = Math.random()*W;
+      const cy = Math.random()*H;
+      const rx = 8 + Math.random()*30;
+      const ry = 3 + Math.random()*6;
+      const rot = (Math.random()*60 - 30).toFixed(0);
+      const col = ['#b8267a','#6c2a9c','#e8338e'][i%3];
+      inner += `<ellipse filter="url(#hbrush2)" cx="${cx.toFixed(0)}" cy="${cy.toFixed(0)}" rx="${rx.toFixed(0)}" ry="${ry.toFixed(0)}" fill="${col}" opacity="${(0.3+Math.random()*0.35).toFixed(2)}" transform="rotate(${rot} ${cx.toFixed(0)} ${cy.toFixed(0)})"/>`;
+    }
+    wrap.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="position:absolute; inset:0; width:100%; height:100%; mix-blend-mode: screen; opacity:0.85">${inner}</svg>`;
+  })();
+
+  // ---------- Star palette + generator ----------
+  const STAR_COLORS = ['#f5c542','#4fb8e8','#9fd13a','#ed7d2d','#c93a8a','#ff7ab8','#ffffff'];
+  function starSVG(color, type){
+    if (type === 'puffy') return `<svg viewBox="0 0 20 20"><path d="M10 1 C 11.5 6, 14 7, 19 8 C 14 9, 11.5 10, 10 19 C 8.5 10, 6 9, 1 8 C 6 7, 8.5 6, 10 1 Z" fill="${color}"/></svg>`;
+    if (type === 'outline') return `<svg viewBox="0 0 20 20"><path d="M10 2 L12 8 L18 8.5 L13.5 12.5 L15 18 L10 14.8 L5 18 L6.5 12.5 L2 8.5 L8 8 Z" fill="none" stroke="${color}" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+    return `<svg viewBox="0 0 20 20"><path d="M10 2 L12 8 L18 8.5 L13.5 12.5 L15 18 L10 14.8 L5 18 L6.5 12.5 L2 8.5 L8 8 Z" fill="${color}"/></svg>`;
+  }
+  function dot(color){ return `<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="3" fill="${color}"/></svg>`; }
+
+  function seedStarsInto(el, count, opts={}){
+    if (!el) return;
+    const types = ['solid','outline','puffy','dot'];
+    for (let i=0;i<count;i++){
+      const c = STAR_COLORS[Math.floor(Math.random()*STAR_COLORS.length)];
+      const type = types[Math.floor(Math.random()*types.length)];
+      const size = (opts.minSize||8) + Math.random()*((opts.maxSize||22) - (opts.minSize||8));
+      const s = document.createElement('span');
+      s.className = 'star' + (Math.random() > 0.5 ? ' float' : '');
+      s.style.left = (Math.random()*100) + '%';
+      s.style.top  = (Math.random()*100) + '%';
+      s.style.width = s.style.height = size + 'px';
+      s.style.setProperty('--rot', (Math.random()*40 - 20)+'deg');
+      s.style.setProperty('--dur', (2 + Math.random()*4).toFixed(2)+'s');
+      s.style.setProperty('--delay', (Math.random()*4).toFixed(2)+'s');
+      s.style.setProperty('--driftDur', (8 + Math.random()*8).toFixed(2)+'s');
+      s.style.setProperty('--opMin', (0.25 + Math.random()*0.35).toFixed(2));
+      s.innerHTML = type === 'dot' ? dot(c) : starSVG(c, type);
+      el.appendChild(s);
+    }
+  }
+  function seedStars(id, count, opts){ seedStarsInto(document.getElementById(id), count, opts); }
+
+  seedStars('hero-stars', 60, {minSize: 8, maxSize: 26});
+  seedStars('coll-stars', 30, {minSize: 6, maxSize: 18});
+  seedStars('story-stars', 50, {minSize: 8, maxSize: 22});
+  seedStars('foot-stars', 25, {minSize: 6, maxSize: 16});
+  // section bands w/ data-stars
+  document.querySelectorAll('[data-stars]').forEach(el => {
+    seedStarsInto(el, parseInt(el.dataset.stars, 10), {minSize: 6, maxSize: 20});
+  });
+
+  // ---------- Shooting stars ----------
+  (function seedShootingStars(){
+    const wrap = document.getElementById('hero-shooting');
+    if (!wrap) return;
+    for (let i = 0; i < 4; i++){
+      const s = document.createElement('span');
+      s.className = 'shoot';
+      s.style.left = (Math.random()*70) + '%';
+      s.style.top  = (10 + Math.random()*70) + '%';
+      s.style.setProperty('--dur', (2 + Math.random()*3).toFixed(2) + 's');
+      s.style.setProperty('--delay', (i * 2.5 + Math.random()*3).toFixed(2) + 's');
+      wrap.appendChild(s);
+    }
+  })();
+
+  // ---------- Wand sparkles ----------
+  (function emitSparkles(){
+    const wrap = document.getElementById('wand-sparkles');
+    if (!wrap) return;
+    setInterval(() => {
+      const s = document.createElement('span');
+      s.className = 'sparkle';
+      const size = 6 + Math.random()*10;
+      s.style.width = s.style.height = size + 'px';
+      s.style.left = (50 + (Math.random()*30-15)) + '%';
+      s.style.top  = (60 + (Math.random()*30-15)) + '%';
+      const dx = (Math.random()*200 - 100);
+      const dy = -(60 + Math.random()*120);
+      s.style.setProperty('--dx', dx+'px');
+      s.style.setProperty('--dy', dy+'px');
+      s.style.setProperty('--dur', (1.4 + Math.random()*1.6).toFixed(2)+'s');
+      wrap.appendChild(s);
+      setTimeout(()=> s.remove(), 3000);
+    }, 280);
+  })();
+
+  // ---------- Reveal on scroll ----------
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold: 0.18});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---------- Parallax for paint blobs + cosmic-bg + nav scrolled state ----------
+  const blobs = document.querySelectorAll('.paint-blob');
+  const cosmics = document.querySelectorAll('.cosmic-bg[data-parallax]');
+  const siteNav = document.getElementById('siteNav');
+
+  function applyParallax(){
+    const y = window.scrollY;
+    blobs.forEach((b, i) => {
+      const speed = (i % 2 ? -0.05 : 0.04);
+      b.style.translate = `0 ${y * speed}px`;
+    });
+    // Each cosmic-bg shifts its bg layers based on its position in the viewport.
+    cosmics.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const center = r.top + r.height / 2 - window.innerHeight / 2;
+      // back layer drifts slower, front layer faster (opposite direction-ish)
+      el.style.setProperty('--py',  `${center * -0.25}px`);
+      el.style.setProperty('--py2', `${center * -0.55}px`);
+    });
+    if (siteNav) {
+      siteNav.classList.toggle('scrolled', y > 40);
+      // progressive opacity 0 → 1 across the first 240px of scroll
+      const op = Math.max(0, Math.min(1, y / 240));
+      siteNav.style.setProperty('--nav-op', op.toFixed(3));
+    }
+  }
+  let raf = null;
+  window.addEventListener('scroll', () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => { applyParallax(); raf = null; });
+  }, {passive: true});
+  applyParallax();
+
+  // ---------- Mobile hamburger menu ----------
+  (function setupMobileMenu(){
+    const btn = document.getElementById('hamburger');
+    const nav = document.getElementById('siteNav');
+    const back = document.getElementById('navBackdrop');
+    if (!btn || !nav) return;
+    const close = () => {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('nav-locked');
+    };
+    const open = () => {
+      nav.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('nav-locked');
+    };
+    btn.addEventListener('click', () => {
+      if (nav.classList.contains('open')) close(); else open();
+    });
+    back && back.addEventListener('click', close);
+    nav.querySelectorAll('ul a').forEach(a => a.addEventListener('click', close));
+    window.addEventListener('resize', () => { if (window.innerWidth > 960) close(); });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
+
+  // ---------- Mouse parallax in hero ----------
+  const hero = document.querySelector('.hero');
+  const heroMorph = document.getElementById('hero-morph');
+  const heroAura = document.querySelector('.hero-aura');
+  hero && hero.addEventListener('mousemove', (e) => {
+    const r = hero.getBoundingClientRect();
+    const x = (e.clientX - r.left)/r.width - 0.5;
+    const y = (e.clientY - r.top)/r.height - 0.5;
+    if (heroMorph) heroMorph.style.translate = `${x*-14}px ${y*-10}px`;
+    if (heroAura) heroAura.style.translate = `${x*-22}px ${y*-18}px`;
+  });
+  hero && hero.addEventListener('mouseleave', () => {
+    if (heroMorph) heroMorph.style.translate = '0 0';
+    if (heroAura) heroAura.style.translate = '0 0';
+  });
+
+  // ---------- Hero image morpher with particle disintegrate/construct ----------
+  class ImageMorpher {
+    constructor(container, srcs, intervalMs = 5000) {
+      this.container = container;
+      this.srcs = srcs;
+      this.idx = 0;
+      this.transitioning = false;
+      this.canvas = document.createElement('canvas');
+      this.ctx = this.canvas.getContext('2d');
+      container.appendChild(this.canvas);
+      this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+      this.resize();
+      window.addEventListener('resize', () => this.resize());
+      this.loadAll().then(() => {
+        // re-resize now that images are loaded so height matches image aspect
+        this.resize();
+        this.drawStatic(this.imgs[0]);
+        setInterval(() => this.transition(), intervalMs);
+      });
+    }
+    resize() {
+      const r = this.container.getBoundingClientRect();
+      this.w = r.width;
+      // Height follows the first image's aspect ratio so the image fills the column.
+      if (this.imgs && this.imgs.length) {
+        const base = this.imgs[0];
+        this.h = (base.height / base.width) * this.w;
+        this.container.style.height = this.h + 'px';
+      } else {
+        this.h = r.height || this.w * 1.5;
+      }
+      this.canvas.width = Math.max(1, Math.round(this.w * this.dpr));
+      this.canvas.height = Math.max(1, Math.round(this.h * this.dpr));
+      this.canvas.style.width = this.w + 'px';
+      this.canvas.style.height = this.h + 'px';
+      this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+      if (this.imgs && this.imgs.length && !this.transitioning) {
+        this.drawStatic(this.imgs[this.idx]);
+      }
+    }
+    loadAll() {
+      return Promise.all(this.srcs.map(src => new Promise(res => {
+        const img = new Image();
+        img.onload = () => res(img);
+        img.onerror = () => res(null);
+        img.src = src;
+      }))).then(arr => { this.imgs = arr.filter(Boolean); });
+    }
+    rectFor(img) {
+      // Fill column width 100%, anchored at bottom.
+      const scale = this.w / img.width;
+      const w = this.w;
+      const h = img.height * scale;
+      const x = 0;
+      const y = this.h - h;
+      return {x, y, w, h};
+    }
+    drawStatic(img) {
+      this.ctx.clearRect(0, 0, this.w, this.h);
+      const r = this.rectFor(img);
+      this.ctx.drawImage(img, r.x, r.y, r.w, r.h);
+    }
+    sample(img, count) {
+      const r = this.rectFor(img);
+      const off = document.createElement('canvas');
+      off.width = Math.max(1, Math.round(r.w));
+      off.height = Math.max(1, Math.round(r.h));
+      const oc = off.getContext('2d');
+      oc.drawImage(img, 0, 0, off.width, off.height);
+      const data = oc.getImageData(0, 0, off.width, off.height).data;
+      const parts = [];
+      let tries = 0;
+      const max = count * 12;
+      while (parts.length < count && tries < max) {
+        tries++;
+        const x = Math.floor(Math.random() * off.width);
+        const y = Math.floor(Math.random() * off.height);
+        const i = (y * off.width + x) * 4;
+        if (data[i+3] < 96) continue;
+        parts.push({
+          tx: r.x + x,
+          ty: r.y + y,
+          color: `rgb(${data[i]},${data[i+1]},${data[i+2]})`,
+          alpha: data[i+3] / 255,
+          size: 1 + Math.random() * 1.8,
+        });
+      }
+      return parts;
+    }
+    transition() {
+      if (this.transitioning || !this.imgs || this.imgs.length < 2) return;
+      this.transitioning = true;
+      const fromImg = this.imgs[this.idx];
+      const nextIdx = (this.idx + 1) % this.imgs.length;
+      const toImg = this.imgs[nextIdx];
+
+      const N = Math.min(2000, Math.floor((this.w * this.h) / 280));
+      const out = this.sample(fromImg, N);
+      const inn = this.sample(toImg, N);
+
+      out.forEach(p => {
+        const ang = Math.random() * Math.PI * 2;
+        const speed = 60 + Math.random() * 220;
+        p.x = p.tx; p.y = p.ty;
+        p.vx = Math.cos(ang) * speed;
+        p.vy = Math.sin(ang) * speed - 40;
+        p.delay = Math.random() * 0.5;
+      });
+      inn.forEach(p => {
+        const ang = Math.random() * Math.PI * 2;
+        const dist = 140 + Math.random() * 320;
+        p.x = p.tx + Math.cos(ang) * dist;
+        p.y = p.ty + Math.sin(ang) * dist - 40;
+        p.delay = Math.random() * 0.5;
+      });
+
+      const DUR_OUT       = 1.4;
+      const DUR_IN        = 1.5;
+      const OVERLAP       = 0.6;
+      const IN_START      = DUR_OUT - OVERLAP;          // 0.8
+      const IN_END        = IN_START + DUR_IN;          // 2.3
+      const FADE_IN_START = IN_END - 0.5;               // 1.8
+      const total         = IN_END + 0.05;
+
+      let start = null;
+      const tick = (ts) => {
+        if (!start) start = ts;
+        const t = (ts - start) / 1000;
+        const ctx = this.ctx;
+        ctx.clearRect(0, 0, this.w, this.h);
+
+        // outgoing particles
+        if (t < DUR_OUT) {
+          for (const p of out) {
+            const local = Math.max(0, (t - p.delay) / Math.max(0.01, DUR_OUT - p.delay));
+            if (local >= 1) continue;
+            const e = local;
+            const px = p.x + p.vx * e;
+            const py = p.y + p.vy * e + 30 * e * e;
+            ctx.globalAlpha = p.alpha * (1 - local);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(px, py, p.size, p.size);
+          }
+        }
+
+        // incoming particles (overlap with outgoing)
+        if (t > IN_START) {
+          const t2 = t - IN_START;
+          for (const p of inn) {
+            const local = Math.min(1, Math.max(0, (t2 - p.delay) / Math.max(0.01, DUR_IN - p.delay)));
+            if (local <= 0) continue;
+            const e = 1 - Math.pow(1 - local, 3);
+            const px = p.x + (p.tx - p.x) * e;
+            const py = p.y + (p.ty - p.y) * e;
+            ctx.globalAlpha = p.alpha * local;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(px, py, p.size, p.size);
+          }
+        }
+
+        // crossfade the real image in at the end so there's no snap
+        if (t > FADE_IN_START) {
+          const fa = Math.min(1, (t - FADE_IN_START) / (IN_END - FADE_IN_START));
+          const r = this.rectFor(toImg);
+          ctx.globalAlpha = fa;
+          ctx.drawImage(toImg, r.x, r.y, r.w, r.h);
+        }
+
+        ctx.globalAlpha = 1;
+        if (t < total) {
+          requestAnimationFrame(tick);
+        } else {
+          this.idx = nextIdx;
+          this.drawStatic(this.imgs[this.idx]);
+          this.transitioning = false;
+        }
+      };
+      requestAnimationFrame(tick);
+    }
+  }
+
+  const morphHost = document.getElementById('hero-morph');
+  if (morphHost) {
+    new ImageMorpher(morphHost, ['assets/cosplayer-1.png', 'assets/cosplayer-2.png'], 10000);
+  }
+
+  // ---------- Active section in nav as user scrolls ----------
+  const sectionsMap = {
+    inicio:        '#inicio',
+    cosplays:      '#cosplays',
+    disfraces:     '#disfraces',
+    indumentaria:  '#indumentaria',
+    trabajos:      '#trabajos',
+    envios:        '#envios',
+    contacto:      '#contacto',
+  };
+  const navLinks = document.querySelectorAll('.site-nav a[data-section]');
+  const sectionEls = Object.entries(sectionsMap).map(([k, sel]) => ({k, el: document.querySelector(sel)}));
+  function setActive(key){
+    navLinks.forEach(l => l.classList.toggle('is-active', l.dataset.section === key));
+  }
+  const sio = new IntersectionObserver((entries)=>{
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio > 0.35) {
+        const k = e.target.id;
+        if (k) setActive(k);
+      }
+    });
+  }, {threshold: [0.35, 0.6]});
+  sectionEls.forEach(s => s.el && sio.observe(s.el));
+  </script>
+</body>
+</html>
