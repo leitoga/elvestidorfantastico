@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — El Vestidor Fantástico</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* =========================================================
+       ADMIN — mobile-first, brand-styled
+       ========================================================= */
+    body { background: var(--bg-deep); }
+
+    .admin-shell {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 100px 18px 120px;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+    }
+    .admin-bg {
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url('assets/fondo.webp');
+      background-repeat: repeat;
+      background-size: 720px 720px;
+      opacity: 0.85;
+    }
+    .admin-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 30% 30%, rgba(184,38,122,0.25), transparent 60%),
+        radial-gradient(ellipse 60% 60% at 80% 70%, rgba(108,42,156,0.35), transparent 60%);
+    }
+
+    /* mini-nav */
+    .admin-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: linear-gradient(180deg, rgba(15,4,38,0.96), rgba(20,6,48,0.88));
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .admin-nav .brand-link {
+      display: flex; align-items: center; gap: 10px;
+      color: #fff; text-decoration: none;
+      font-family: 'Patrick Hand SC', cursive;
+      letter-spacing: 2px; font-size: 13px;
+    }
+    .admin-nav .brand-link img { height: 50px; width: auto; }
+    .admin-nav .nav-right {
+      font-family: 'Patrick Hand SC', cursive;
+      letter-spacing: 2.5px;
+      color: var(--pink);
+      font-size: 13px;
+    }
+
+    /* header */
+    h1.admin-title {
+      font-family: 'Caveat Brush', cursive;
+      font-size: 56px;
+      line-height: 0.95;
+      color: #fff;
+      letter-spacing: 1px;
+      text-shadow: 0 4px 0 rgba(0,0,0,0.18);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    h1.admin-title .pink { color: var(--pink); display: inline-block; transform: rotate(-2deg); margin-left: 6px; }
+    .admin-sub {
+      font-family: 'Caveat', cursive;
+      font-size: 19px;
+      color: #f7e9f3;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    /* ===== Login ===== */
+    #login-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 200px);
+    }
+    .login-card {
+      background: rgba(20, 6, 48, 0.78);
+      border: 2px dashed rgba(255, 166, 207, 0.5);
+      border-radius: 18px;
+      padding: 28px 22px;
+      max-width: 420px;
+      width: 100%;
+      margin: 0 auto;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .login-card .login-title,
+    .login-card .btn-row { text-align: center; }
+    .login-card .btn-row { justify-content: center; }
+    .login-title {
+      font-family: 'Caveat Brush', cursive;
+      font-size: 28px;
+      color: var(--pink);
+      margin-bottom: 14px;
+      letter-spacing: 1px;
+    }
+    .login-err {
+      color: #ff8aaa;
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      margin-top: 8px;
+      display: none;
+    }
+
+    /* ===== Common inputs ===== */
+    .fl { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .fl label {
+      font-family: 'Patrick Hand SC', cursive;
+      letter-spacing: 2px;
+      font-size: 12px;
+      color: var(--pink);
+    }
+    .fl input,
+    .fl select,
+    .fl textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Caveat', cursive;
+      font-size: 19px;
+      outline: none;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .fl input:focus,
+    .fl select:focus,
+    .fl textarea:focus {
+      border-color: var(--pink);
+      background: rgba(255,255,255,0.12);
+    }
+    .fl input::placeholder, .fl textarea::placeholder {
+      color: rgba(255,255,255,0.45);
+    }
+    .fl select option { color: #1a0934; }
+    .fl textarea { min-height: 78px; resize: vertical; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 540px) { .frow { grid-template-columns: 1fr; } }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      font-family: 'Patrick Hand SC', cursive;
+      letter-spacing: 2px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover { background: rgba(255,255,255,0.15); transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(95deg, #b8267a, #e8338e);
+      border-color: transparent;
+      box-shadow: 0 8px 18px rgba(232, 51, 142, 0.35);
+      color: #fff;
+    }
+    .btn-primary:hover { filter: brightness(1.1); box-shadow: 0 12px 22px rgba(232, 51, 142, 0.5); }
+    .btn-danger { color: #ffb3c8; border-color: rgba(255, 122, 184, 0.4); }
+    .btn-danger:hover { background: rgba(232, 51, 142, 0.18); color: #fff; }
+    .btn-sm { padding: 7px 14px; font-size: 11px; letter-spacing: 1.5px; }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+    /* ===== Logout row ===== */
+    .logout-row {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+      margin-bottom: 26px;
+      text-align: left;
+    }
+    .logout-row > div { flex: 1; }
+    .logout-row h1.admin-title,
+    .logout-row .admin-sub { text-align: left; }
+
+    /* ===== Mode tabs ===== */
+    .mode-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    @media (max-width: 540px) { .mode-tabs { grid-template-columns: 1fr; } }
+    .mode-tab {
+      background: rgba(20, 6, 48, 0.7);
+      border: 1.5px dashed rgba(255,166,207,0.35);
+      border-radius: 16px;
+      padding: 16px 12px;
+      color: #fff;
+      cursor: pointer;
+      text-align: center;
+      font-family: inherit;
+      transition: all .2s ease;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .mode-tab:hover { background: rgba(40, 14, 80, 0.85); border-color: var(--pink); }
+    .mode-tab.active {
+      background: linear-gradient(135deg, rgba(184,38,122,0.45), rgba(108,42,156,0.45));
+      border-color: var(--pink);
+      border-style: solid;
+      box-shadow: 0 8px 22px rgba(232,51,142,0.3);
+    }
+    .mode-icon { font-size: 24px; display: block; margin-bottom: 6px; color: var(--pink); }
+    .mode-label {
+      font-family: 'Patrick Hand SC', cursive;
+      letter-spacing: 2px;
+      font-size: 13px;
+      display: block;
+    }
+    .mode-desc {
+      font-family: 'Caveat', cursive;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ===== Action panel ===== */
+    .action-panel {
+      background: rgba(20, 6, 48, 0.78);
+      border: 2px dashed rgba(255, 166, 207, 0.45);
+      border-radius: 18px;
+      padding: 22px 20px;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .action-title {
+      font-family: 'Caveat Brush', cursive;
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .action-sub {
+      font-family: 'Caveat', cursive;
+      font-size: 17px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 16px;
+    }
+
+    /* Week preview */
+    .week-preview {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+      margin: 12px 0;
+    }
+    .wp-day {
+      text-align: center;
+      padding: 8px 2px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.05);
+      font-family: 'Caveat', cursive;
+    }
+    .wp-day.wp-busy { background: rgba(232,51,142,0.25); border-color: var(--magenta-hot); }
+    .wp-day.wp-free { background: rgba(159,209,58,0.15); border-color: #88b53a; }
+    .wp-name { font-family:'Patrick Hand SC', cursive; font-size: 10px; letter-spacing: 1px; opacity: 0.8; }
+    .wp-num { font-size: 16px; font-weight: 600; margin-top: 2px; }
+
+    /* ===== Card sections (preview, lists) ===== */
+    .card {
+      background: rgba(20, 6, 48, 0.78);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .section-title {
+      font-family: 'Caveat Brush', cursive;
+      font-size: 22px;
+      color: #fff;
+    }
+    .section-sub {
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 14px;
+    }
+
+    /* Mini-cal */
+    .mc-topbar { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .mc-month {
+      flex: 1;
+      font-family: 'Caveat Brush', cursive;
+      font-size: 20px;
+      color: var(--pink);
+      text-transform: capitalize;
+    }
+    .mini-cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+    .mc-hdr {
+      text-align: center;
+      font-family: 'Patrick Hand SC', cursive;
+      letter-spacing: 1.2px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.55);
+      padding: 4px 0;
+    }
+    .mc-day {
+      text-align: center;
+      padding: 10px 2px;
+      border-radius: 10px;
+      font-family: 'Patrick Hand', cursive;
+      font-size: 14px;
+      color: #2c0a55;
+      background: #ffd6e6;
+      position: relative;
+    }
+    .mc-day.is-free  { background: #ffd6e6; color: #2c0a55; }
+    .mc-day.is-busy  { background: #e8338e; color: #fff; }
+    .mc-day.is-event { background: #6e4ea8; color: #fff; }
+    .mc-day.other { opacity: 0.3; }
+    .mc-day.today { outline: 2px solid #fff; outline-offset: -2px; }
+
+    /* List items */
+    .list-item {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+      padding: 12px 0; border-bottom: 1px dashed rgba(255,255,255,0.08);
+    }
+    .list-item:last-child { border-bottom: none; }
+    .li-info { flex: 1; min-width: 0; }
+    .li-name { font-family: 'Caveat', cursive; font-size: 19px; color: #fff; line-height: 1.1; font-weight: 600; }
+    .li-meta { font-family: 'Caveat', cursive; font-size: 16px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+    .empty {
+      font-family: 'Caveat', cursive;
+      font-size: 17px;
+      color: rgba(255,255,255,0.5);
+      padding: 4px 0;
+    }
+
+    /* Toast */
+    #ag-toast {
+      position: fixed;
+      bottom: 26px; left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(95deg, #b8267a, #e8338e);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-family: 'Patrick Hand SC', cursive;
+      letter-spacing: 2px;
+      font-size: 13px;
+      z-index: 999;
+      transition: opacity .3s ease;
+      box-shadow: 0 10px 24px rgba(232,51,142,0.45);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-bg"></div>
+
+  <nav class="admin-nav">
+    <a href="index.html" class="brand-link">
+      <img src="assets/logo-negro.png" alt="El Vestidor Fantástico"/>
+      <span>← VOLVER AL SITIO</span>
+    </a>
+    <span class="nav-right">✦ ADMIN</span>
+  </nav>
+
+  <div class="admin-shell">
+
+    <!-- ===== LOGIN ===== -->
+    <div id="login-section">
+      <h1 class="admin-title">PANEL <span class="pink">ADMIN</span></h1>
+      <p class="admin-sub">Ingresá tu contraseña para gestionar la disponibilidad.</p>
+
+      <div class="login-card">
+        <div class="login-title">✦ Acceso admin</div>
+        <div class="fl">
+          <label>Contraseña</label>
+          <input type="password" id="ag-pwd" placeholder="Tu contraseña" onkeydown="if(event.key==='Enter')AD.login()"/>
+        </div>
+        <div class="login-err" id="login-err">Contraseña incorrecta.</div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="AD.login()">ENTRAR ✦</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANEL ===== -->
+    <div id="admin-section" style="display:none">
+      <div class="logout-row">
+        <div>
+          <h1 class="admin-title">PANEL <span class="pink">ADMIN</span></h1>
+          <p class="admin-sub" style="margin-bottom:0">Los cambios se reflejan en disponibilidad al instante.</p>
+        </div>
+        <button class="btn btn-sm" onclick="AD.logout()">SALIR</button>
+      </div>
+
+      <!-- MODE TABS -->
+      <div class="mode-tabs">
+        <button class="mode-tab" id="tab-day" onclick="AD.setMode('day')">
+          <span class="mode-icon">▢</span>
+          <span class="mode-label">POR DÍA</span>
+          <span class="mode-desc">Cambiá el estado de un día</span>
+        </button>
+        <button class="mode-tab" id="tab-week" onclick="AD.setMode('week')">
+          <span class="mode-icon">▦</span>
+          <span class="mode-label">POR SEMANA</span>
+          <span class="mode-desc">Bloqueá o liberá toda una semana</span>
+        </button>
+        <button class="mode-tab" id="tab-event" onclick="AD.setMode('event')">
+          <span class="mode-icon">✦</span>
+          <span class="mode-label">EVENTO</span>
+          <span class="mode-desc">Agregá un evento a un día</span>
+        </button>
+      </div>
+
+      <!-- PANEL: DÍA -->
+      <div class="action-panel" id="panel-day" style="display:none">
+        <div class="action-title">Editar un día</div>
+        <div class="action-sub">Elegí el día y el estado que querés asignarle.</div>
+        <div class="frow">
+          <div class="fl"><label>DÍA *</label><input type="date" id="d-date"/></div>
+          <div class="fl"><label>ESTADO *</label>
+            <select id="d-status">
+              <option value="free">✓ Disponible</option>
+              <option value="busy">✕ No disponible</option>
+            </select>
+          </div>
+        </div>
+        <div class="fl"><label>NOTA (visible en agenda)</label><input type="text" id="d-note" placeholder="Ej: Feriado, viaje..."/></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="AD.saveDay()">GUARDAR ✦</button>
+        </div>
+      </div>
+
+      <!-- PANEL: SEMANA -->
+      <div class="action-panel" id="panel-week" style="display:none">
+        <div class="action-title">Editar una semana</div>
+        <div class="action-sub">Elegí cualquier día y se selecciona la semana lunes a domingo completa.</div>
+        <div class="frow">
+          <div class="fl"><label>CUALQUIER DÍA DE LA SEMANA *</label><input type="date" id="w-date" oninput="AD.previewWeek()"/></div>
+          <div class="fl"><label>ESTADO *</label>
+            <select id="w-status" onchange="AD.previewWeek()">
+              <option value="busy">✕ No disponible</option>
+              <option value="free">✓ Disponible</option>
+            </select>
+          </div>
+        </div>
+        <div class="fl"><label>NOTA (visible en agenda)</label><input type="text" id="w-note" placeholder="Ej: Vacaciones, feriado..."/></div>
+        <div id="week-preview-wrap" style="display:none">
+          <div style="font-family:'Patrick Hand SC',cursive; letter-spacing:1.5px; font-size:11px; color:var(--pink); margin-bottom:6px;">SEMANA SELECCIONADA</div>
+          <div class="week-preview" id="week-preview"></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="AD.saveWeek()">GUARDAR SEMANA ✦</button>
+        </div>
+      </div>
+
+      <!-- PANEL: EVENTO -->
+      <div class="action-panel" id="panel-event" style="display:none">
+        <div class="action-title">Agregar evento</div>
+        <div class="action-sub">El día quedará marcado en violeta en la agenda pública.</div>
+        <div class="fl"><label>NOMBRE DEL EVENTO *</label><input type="text" id="ev-name" placeholder="Ej: Charla abierta, taller, evento..."/></div>
+        <div class="frow">
+          <div class="fl"><label>FECHA *</label><input type="date" id="ev-date"/></div>
+          <div class="fl"><label>HORA</label><input type="time" id="ev-time"/></div>
+        </div>
+        <div class="fl"><label>DESCRIPCIÓN (opcional)</label><textarea id="ev-desc" placeholder="Detalles visibles en la agenda..."></textarea></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="AD.saveEvent()">GUARDAR EVENTO ✦</button>
+        </div>
+      </div>
+
+      <!-- MINI-CAL PREVIEW -->
+      <div class="card">
+        <div class="section-title">Vista previa</div>
+        <div class="section-sub">Así se ve la agenda este mes en el sitio.</div>
+        <div class="mc-topbar">
+          <button class="btn btn-sm" onclick="AD.mcPrev()">‹</button>
+          <span class="mc-month" id="mc-label"></span>
+          <button class="btn btn-sm" onclick="AD.mcNext()">›</button>
+        </div>
+        <div class="mini-cal" id="mini-cal"></div>
+      </div>
+
+      <!-- BLOCKED LIST -->
+      <div class="card">
+        <div class="section-title">Días bloqueados</div>
+        <div id="blocked-list" style="margin-top:.75rem"><div class="empty">Sin días bloqueados.</div></div>
+      </div>
+
+      <!-- EVENTS LIST -->
+      <div class="card">
+        <div class="section-title">Eventos guardados</div>
+        <div id="events-list" style="margin-top:.75rem"><div class="empty">Sin eventos todavía.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const AD = (() => {
+      const PASS = "admin123"; // ★ Cambiá esta contraseña
+
+      const MONTHS = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+      const DAYS_SHORT = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+      const now = new Date();
+      let mcYr = now.getFullYear(), mcMo = now.getMonth();
+      let blocked = {}, events = [];
+      let mode = null;
+
+      function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+      function pad(n){return String(n).padStart(2,"0");}
+      function dateStr(y,m,d){return y+"-"+pad(m+1)+"-"+pad(d);}
+      function todayStr(){return dateStr(now.getFullYear(),now.getMonth(),now.getDate());}
+      function parseDate(s){return new Date(s+"T12:00:00");}
+
+      function save(){
+        localStorage.setItem("ag_blocked", JSON.stringify(blocked));
+        localStorage.setItem("ag_events",  JSON.stringify(events));
+      }
+      function load(){
+        try { const v = localStorage.getItem("ag_blocked"); if (v) blocked = JSON.parse(v); } catch(e){}
+        try { const v = localStorage.getItem("ag_events");  if (v) events  = JSON.parse(v); } catch(e){}
+      }
+      function stateOf(ds){
+        if (blocked[ds]) return "busy";
+        if (events.some(e => e.date === ds)) return "event";
+        return "free";
+      }
+
+      function login(){
+        if (document.getElementById("ag-pwd").value === PASS){
+          document.getElementById("login-section").style.display = "none";
+          document.getElementById("admin-section").style.display = "block";
+          load(); renderAll();
+          setMode("day");
+        } else {
+          document.getElementById("login-err").style.display = "block";
+        }
+      }
+      function logout(){
+        document.getElementById("admin-section").style.display = "none";
+        document.getElementById("login-section").style.display = "block";
+        document.getElementById("ag-pwd").value = "";
+        mode = null;
+      }
+
+      function setMode(m){
+        mode = m;
+        ["day","week","event"].forEach(x => {
+          document.getElementById("panel-" + x).style.display = (m === x) ? "block" : "none";
+          const tab = document.getElementById("tab-" + x);
+          tab.classList.toggle("active", m === x);
+        });
+      }
+
+      function saveDay(){
+        const date = document.getElementById("d-date").value;
+        const status = document.getElementById("d-status").value;
+        const note = document.getElementById("d-note").value.trim();
+        if (!date){ alert("Elegí un día."); return; }
+        if (status === "free") delete blocked[date];
+        else blocked[date] = { note };
+        save(); renderAll();
+        document.getElementById("d-note").value = "";
+        showToast(status === "free" ? "Día marcado como disponible ✓" : "Día bloqueado ✓");
+      }
+
+      function getWeekDates(anyDate){
+        const d = parseDate(anyDate);
+        const dow = d.getDay(); // 0 = dom
+        const monday = new Date(d);
+        monday.setDate(d.getDate() - (dow === 0 ? 6 : dow - 1));
+        const days = [];
+        for (let i = 0; i < 7; i++){
+          const dd = new Date(monday);
+          dd.setDate(monday.getDate() + i);
+          days.push(dateStr(dd.getFullYear(), dd.getMonth(), dd.getDate()));
+        }
+        return days;
+      }
+
+      function previewWeek(){
+        const val = document.getElementById("w-date").value;
+        if (!val){ document.getElementById("week-preview-wrap").style.display = "none"; return; }
+        const days = getWeekDates(val);
+        const status = document.getElementById("w-status").value;
+        const wrap = document.getElementById("week-preview");
+        const names = ["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"];
+        wrap.innerHTML = days.map((ds, i) => {
+          const d = parseDate(ds);
+          return `<div class="wp-day wp-${status}">
+            <div class="wp-name">${names[i]}</div>
+            <div class="wp-num">${d.getDate()}</div>
+          </div>`;
+        }).join("");
+        document.getElementById("week-preview-wrap").style.display = "block";
+      }
+
+      function saveWeek(){
+        const val = document.getElementById("w-date").value;
+        if (!val){ alert("Elegí un día de la semana."); return; }
+        const status = document.getElementById("w-status").value;
+        const note = document.getElementById("w-note").value.trim();
+        const days = getWeekDates(val);
+        days.forEach(ds => {
+          if (status === "free") delete blocked[ds];
+          else blocked[ds] = { note };
+        });
+        save(); renderAll();
+        document.getElementById("w-note").value = "";
+        document.getElementById("week-preview-wrap").style.display = "none";
+        document.getElementById("w-date").value = "";
+        showToast(status === "free" ? "Semana liberada ✓" : "Semana bloqueada ✓");
+      }
+
+      function saveEvent(){
+        const name = document.getElementById("ev-name").value.trim();
+        const date = document.getElementById("ev-date").value;
+        if (!name || !date){ alert("Completá nombre y fecha del evento."); return; }
+        events.push({
+          id: Date.now(),
+          date,
+          time: document.getElementById("ev-time").value,
+          name,
+          desc: document.getElementById("ev-desc").value.trim()
+        });
+        document.getElementById("ev-name").value = "";
+        document.getElementById("ev-desc").value = "";
+        document.getElementById("ev-time").value = "";
+        save(); renderAll();
+        showToast("Evento guardado ✓");
+      }
+
+      function deleteRange(keys){ keys.forEach(k => delete blocked[k]); save(); renderAll(); }
+      function deleteEvent(id){ events = events.filter(e => e.id !== id); save(); renderAll(); }
+
+      function renderMiniCal(){
+        document.getElementById("mc-label").textContent = MONTHS[mcMo] + " " + mcYr;
+        const grid = document.getElementById("mini-cal");
+        grid.innerHTML = "";
+        DAYS_SHORT.forEach(d => {
+          const h = document.createElement("div"); h.className = "mc-hdr"; h.textContent = d; grid.appendChild(h);
+        });
+        const first = new Date(mcYr, mcMo, 1).getDay();
+        const total = new Date(mcYr, mcMo+1, 0).getDate();
+        const prev = new Date(mcYr, mcMo, 0).getDate();
+        const ts = todayStr();
+        const colors = { free: "#6fa83c", busy: "#e8338e", event: "#6e4ea8" };
+        for (let i = 0; i < first; i++){
+          const c = document.createElement("div"); c.className = "mc-day other";
+          c.textContent = prev - first + 1 + i; grid.appendChild(c);
+        }
+        for (let d = 1; d <= total; d++){
+          const ds = dateStr(mcYr, mcMo, d);
+          const state = stateOf(ds);
+          const c = document.createElement("div"); c.className = "mc-day is-" + state;
+          if (ds === ts) c.classList.add("today");
+          c.textContent = d;
+          grid.appendChild(c);
+        }
+        const rem = (7 - (first + total) % 7) % 7;
+        for (let i = 1; i <= rem; i++){
+          const c = document.createElement("div"); c.className = "mc-day other";
+          c.textContent = i; grid.appendChild(c);
+        }
+      }
+      function mcPrev(){ mcMo--; if (mcMo < 0){ mcMo = 11; mcYr--; } renderMiniCal(); }
+      function mcNext(){ mcMo++; if (mcMo > 11){ mcMo = 0; mcYr++; } renderMiniCal(); }
+
+      function renderLists(){
+        const bEl = document.getElementById("blocked-list");
+        const bKeys = Object.keys(blocked).sort();
+        if (!bKeys.length){
+          bEl.innerHTML = '<div class="empty">Sin días bloqueados.</div>';
+        } else {
+          // group consecutive days with same note
+          const groups = [];
+          bKeys.forEach(k => {
+            if (!groups.length){ groups.push({from: k, to: k, note: blocked[k].note}); return; }
+            const g = groups[groups.length - 1];
+            const next = new Date(g.to + "T12:00:00"); next.setDate(next.getDate() + 1);
+            const cur = new Date(k + "T12:00:00");
+            if (cur.getTime() === next.getTime() && blocked[k].note === g.note){ g.to = k; }
+            else groups.push({from: k, to: k, note: blocked[k].note});
+          });
+          bEl.innerHTML = groups.map(g => {
+            const label = g.from === g.to ? g.from : g.from + " → " + g.to;
+            const keys = bKeys.filter(k => k >= g.from && k <= g.to);
+            const delCall = "AD.deleteRange(" + JSON.stringify(keys) + ")";
+            return `<div class="list-item">
+              <div class="li-info">
+                <div class="li-name">${label}</div>
+                ${g.note ? `<div class="li-meta">${esc(g.note)}</div>` : ""}
+              </div>
+              <button class="btn btn-sm btn-danger" onclick='${delCall}'>BORRAR</button>
+            </div>`;
+          }).join("");
+        }
+
+        const eEl = document.getElementById("events-list");
+        const sorted = [...events].sort((a,b) => a.date.localeCompare(b.date) || (a.time||"").localeCompare(b.time||""));
+        if (!sorted.length){
+          eEl.innerHTML = '<div class="empty">Sin eventos todavía.</div>';
+        } else {
+          eEl.innerHTML = sorted.map(e => `<div class="list-item">
+            <div class="li-info">
+              <div class="li-name">${esc(e.name)}</div>
+              <div class="li-meta">${e.date}${e.time ? " · " + e.time : ""}${e.desc ? " · " + esc(e.desc) : ""}</div>
+            </div>
+            <button class="btn btn-sm btn-danger" onclick="AD.deleteEvent(${e.id})">BORRAR</button>
+          </div>`).join("");
+        }
+      }
+
+      function showToast(msg){
+        let t = document.getElementById("ag-toast");
+        if (!t){
+          t = document.createElement("div");
+          t.id = "ag-toast";
+          document.body.appendChild(t);
+        }
+        t.textContent = msg;
+        t.style.opacity = "1";
+        clearTimeout(t._to);
+        t._to = setTimeout(() => t.style.opacity = "0", 2200);
+      }
+
+      function renderAll(){ renderMiniCal(); renderLists(); }
+
+      return { login, logout, setMode, saveDay, previewWeek, saveWeek, saveEvent, deleteRange, deleteEvent, mcPrev, mcNext };
+    })();
+  </script>
+</body>
+</html>

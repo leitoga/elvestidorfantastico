@@ -19,9 +19,8 @@
         <li><a href="#disfraces" data-section="disfraces">DISFRACES</a></li>
         <li><a href="#indumentaria" data-section="indumentaria">INDUMENTARIA</a></li>
         <li><a href="#trabajos" data-section="trabajos">NUESTROS TRABAJOS</a></li>
-        <li><a href="#disponibilidad" data-section="disponibilidad">DISPONIBILIDAD</a></li>
+        <li><a href="#envios" data-section="envios">ENVÍOS</a></li>
         <li><a href="#contacto" data-section="contacto">CONTACTO</a></li>
-        <li class="admin-li"><a href="admin.html" class="admin-link">ADMIN</a></li>
       </ul>
       <div class="icons">
         <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -254,34 +253,19 @@
     <div class="section-divider thin" aria-hidden="true"></div>
   </section>
 
-  <!-- ===== DISPONIBILIDAD ===== -->
-  <section class="land-section cream" id="disponibilidad">
+  <!-- ===== ENVÍOS ===== -->
+  <section class="land-section cream" id="envios">
     <div class="stars" data-stars="22"></div>
     <svg class="paint-blob drift-blob" style="bottom:-50px;left:-60px;width:420px;height:320px;opacity:.4" viewBox="0 0 420 320">
       <path d="M40 120 C 80 40, 200 20, 320 60 C 400 100, 410 200, 360 260 C 300 320, 160 310, 80 280 C 20 250, 10 180, 40 120 Z" fill="#b8267a"/>
     </svg>
     <div class="inner">
-      <h2 class="reveal delay-1">DISPONIBILIDAD</h2>
-
-      <div class="agenda reveal delay-2">
-        <div class="ag-topbar">
-          <button class="ag-nav-btn" onclick="AG.prev()" aria-label="Mes anterior">‹</button>
-          <span class="ag-month brush" id="ag-month-label"></span>
-          <button class="ag-nav-btn" onclick="AG.next()" aria-label="Mes siguiente">›</button>
-        </div>
-
-        <div class="ag-legend">
-          <div class="ag-leg"><span class="ag-dot ag-free"></span>Disponible</div>
-          <div class="ag-leg"><span class="ag-dot ag-busy"></span>No disponible</div>
-          <div class="ag-leg"><span class="ag-dot ag-event"></span>Evento</div>
-        </div>
-
-        <div class="ag-grid" id="ag-grid"></div>
-
-        <div class="ag-detail">
-          <div class="ag-detail-title" id="ag-detail-title">Seleccioná un día</div>
-          <div id="ag-detail-body"><div class="ag-empty">Hacé clic en un día para ver el detalle.</div></div>
-        </div>
+      <span class="crumb reveal">✦ LLEGAMOS A TODOS LADOS ✦</span>
+      <h2 class="reveal delay-1">ENVÍOS<span class="pink glow-pink">A TODO EL PAÍS</span></h2>
+      <p class="lead reveal delay-2">Información de envíos, plazos y zonas de cobertura.</p>
+      <div class="placeholder reveal delay-3">
+        <span class="pill">PRÓXIMAMENTE</span>
+        <p>Este espacio está esperando su contenido mágico ✨<br/>Pronto vas a ver los detalles de <strong>envíos</strong>.</p>
       </div>
     </div>
   </section>
@@ -593,121 +577,7 @@
   }, {passive: true});
   applyParallax();
 
-  // ---------- Agenda widget (DISPONIBILIDAD) ----------
-  window.AG = (function(){
-    const MONTHS = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-    const DAYS = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
-    const today = new Date();
-    let yr = today.getFullYear(), mo = today.getMonth(), sel = null;
-    let blocked = {}, events = [];
-
-    function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
-    function pad(n){return String(n).padStart(2,"0");}
-    function ds(y,m,d){return y+"-"+pad(m+1)+"-"+pad(d);}
-    function todayStr(){return ds(today.getFullYear(),today.getMonth(),today.getDate());}
-
-    function load(){
-      try { const v = localStorage.getItem("ag_blocked"); if (v) blocked = JSON.parse(v); } catch(e){}
-      try { const v = localStorage.getItem("ag_events");  if (v) events  = JSON.parse(v); } catch(e){}
-    }
-    function stateOf(d){
-      if (blocked[d]) return "busy";
-      if (events.some(e => e.date === d)) return "event";
-      return "free";
-    }
-    function render(){
-      const grid = document.getElementById("ag-grid");
-      const label = document.getElementById("ag-month-label");
-      if (!grid || !label) return;
-      label.textContent = MONTHS[mo] + " " + yr;
-      grid.innerHTML = "";
-      DAYS.forEach(d => {
-        const h = document.createElement("div");
-        h.className = "ag-hdr";
-        h.textContent = d;
-        grid.appendChild(h);
-      });
-      const first = new Date(yr, mo, 1).getDay();
-      const total = new Date(yr, mo+1, 0).getDate();
-      const prev = new Date(yr, mo, 0).getDate();
-      const ts = todayStr();
-      for (let i = 0; i < first; i++){
-        const c = document.createElement("div");
-        c.className = "ag-day other";
-        const n = document.createElement("div");
-        n.className = "ag-day-num";
-        n.textContent = prev - first + 1 + i;
-        c.appendChild(n);
-        grid.appendChild(c);
-      }
-      for (let d = 1; d <= total; d++){
-        const date = ds(yr, mo, d);
-        const state = stateOf(date);
-        const c = document.createElement("div");
-        c.className = "ag-day is-" + state;
-        if (date === ts) c.classList.add("today");
-        if (date === sel) c.classList.add("selected");
-        const n = document.createElement("div");
-        n.className = "ag-day-num";
-        n.textContent = d;
-        c.appendChild(n);
-        c.onclick = () => select(date);
-        grid.appendChild(c);
-      }
-      const rem = (7 - (first + total) % 7) % 7;
-      for (let i = 1; i <= rem; i++){
-        const c = document.createElement("div");
-        c.className = "ag-day other";
-        const n = document.createElement("div");
-        n.className = "ag-day-num";
-        n.textContent = i;
-        c.appendChild(n);
-        grid.appendChild(c);
-      }
-    }
-    function select(date){
-      sel = date;
-      render();
-      const p = date.split("-");
-      const title = parseInt(p[2]) + " de " + MONTHS[parseInt(p[1]) - 1] + " de " + p[0];
-      document.getElementById("ag-detail-title").textContent = title;
-      const state = stateOf(date);
-      const evs = events.filter(e => e.date === date).sort((a,b) => (a.time||"99:99").localeCompare(b.time||"99:99"));
-      let html = "";
-      if (state === "busy"){
-        const note = blocked[date] && blocked[date].note;
-        html += `<span class="ag-badge ag-b-busy">✕ NO DISPONIBLE${note ? " · " + esc(note) : ""}</span>`;
-      } else if (state === "event"){
-        html += `<span class="ag-badge ag-b-event">✦ DÍA CON EVENTO</span>`;
-      } else {
-        html += `<span class="ag-badge ag-b-free">✓ DISPONIBLE</span>`;
-      }
-      if (evs.length){
-        html += `<div class="ag-ev-list">`;
-        evs.forEach(e => {
-          html += `<div class="ag-ev-row">
-            <div class="ag-ev-time">${esc(e.time) || "—"}</div>
-            <div>
-              <div class="ag-ev-name">${esc(e.name)}</div>
-              ${e.desc ? `<div class="ag-ev-desc">${esc(e.desc)}</div>` : ""}
-            </div>
-          </div>`;
-        });
-        html += `</div>`;
-      }
-      document.getElementById("ag-detail-body").innerHTML = html;
-    }
-    function prev(){ mo--; if (mo < 0){ mo = 11; yr--; } render(); }
-    function next(){ mo++; if (mo > 11){ mo = 0; yr++; } render(); }
-
-    load();
-    // Re-render if storage changes from admin tab
-    window.addEventListener("storage", e => {
-      if (e.key === "ag_blocked" || e.key === "ag_events"){ load(); render(); if (sel) select(sel); }
-    });
-    render();
-    return { prev, next };
-  })();
+  // ---------- Mobile hamburger menu ----------
   (function setupMobileMenu(){
     const btn = document.getElementById('hamburger');
     const nav = document.getElementById('siteNav');
@@ -962,7 +832,7 @@
     disfraces:     '#disfraces',
     indumentaria:  '#indumentaria',
     trabajos:      '#trabajos',
-    disponibilidad: '#disponibilidad',
+    envios:        '#envios',
     contacto:      '#contacto',
   };
   const navLinks = document.querySelectorAll('.site-nav a[data-section]');
@@ -991,15 +861,42 @@
   window.addEventListener('scroll', updateActiveOnScroll, {passive: true});
   updateActiveOnScroll();
   </script>
-  <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
-  <a class="wa-btn" href="https://wa.me/5491100000000?text=Hola!%20Me%20encantar%C3%ADa%20saber%20m%C3%A1s%20sobre%20El%20Vestidor%20Fant%C3%A1stico%20%E2%9C%A8"
+  <!-- ===== FLOATING WHATSAPP STAR BUTTON ===== -->
+  <a class="wa-fab" href="https://wa.me/5491100000000?text=Hola!%20Me%20encantaría%20saber%20más%20sobre%20El%20Vestidor%20Fantástico%20✨"
      target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-    <svg class="wa-btn-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M 50 6 C 53 6, 55 8, 56 11 L 63 30 C 64 33, 66 34, 69 34 L 89 35 C 93 35, 95 38, 95 41 C 95 43, 94 45, 92 47 L 76 60 C 74 62, 73 64, 74 67 L 80 86 C 81 90, 79 93, 76 94 C 74 94, 72 94, 70 92 L 53 81 C 51 80, 49 80, 47 81 L 30 92 C 28 94, 26 94, 24 94 C 21 93, 19 90, 20 86 L 26 67 C 27 64, 26 62, 24 60 L 8 47 C 6 45, 5 43, 5 41 C 5 38, 7 35, 11 35 L 31 34 C 34 34, 36 33, 37 30 L 44 11 C 45 8, 47 6, 50 6 Z"/>
+    <svg class="wa-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- 5-point rounded star -->
+      <path d="M 50 6
+               C 53 6, 55 8, 56 11
+               L 63 30
+               C 64 33, 66 34, 69 34
+               L 89 35
+               C 93 35, 95 38, 95 41
+               C 95 43, 94 45, 92 47
+               L 76 60
+               C 74 62, 73 64, 74 67
+               L 80 86
+               C 81 90, 79 93, 76 94
+               C 74 94, 72 94, 70 92
+               L 53 81
+               C 51 80, 49 80, 47 81
+               L 30 92
+               C 28 94, 26 94, 24 94
+               C 21 93, 19 90, 20 86
+               L 26 67
+               C 27 64, 26 62, 24 60
+               L 8 47
+               C 6 45, 5 43, 5 41
+               C 5 38, 7 35, 11 35
+               L 31 34
+               C 34 34, 36 33, 37 30
+               L 44 11
+               C 45 8, 47 6, 50 6 Z" />
     </svg>
-    <svg class="wa-btn-logo" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true">
+    <svg class="wa-icon" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true">
       <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
     </svg>
+    <span class="wa-tip">¡Hablemos! ✨</span>
   </a>
 
 </body>

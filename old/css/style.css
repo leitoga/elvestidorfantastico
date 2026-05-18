@@ -162,7 +162,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   flex-shrink: 0;
 }
 .site-nav .brand img {
-  height: 60px;
+  height: 156px;
   width: auto;
 }
 .site-nav .brand .tag {
@@ -176,14 +176,14 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 .site-nav ul {
   display: flex;
-  gap: 22px;
+  gap: 36px;
   list-style: none;
   align-items: center;
 }
 .site-nav ul a {
   font-family: 'Patrick Hand SC', cursive;
-  font-size: 15px;
-  letter-spacing: 2px;
+  font-size: 17px;
+  letter-spacing: 2.5px;
   color: #fff;
   padding: 6px 2px;
   position: relative;
@@ -1092,13 +1092,13 @@ body.nav-locked .nav-backdrop { opacity: 1; pointer-events: auto; }
   .site-nav { padding: 14px 28px; }
   .site-nav ul { gap: 22px; }
   .site-nav ul a { font-size: 14px; letter-spacing: 1.8px; }
-  .site-nav .brand img { height: 78px; }
+  .site-nav .brand img { height: 132px; }
 }
 
 @media (max-width: 960px) {
   .hamburger { display: flex; }
   .site-nav, .site-nav.scrolled { padding: 12px 18px; }
-  .site-nav .brand img { height: 56px; }
+  .site-nav .brand img { height: 84px; }
 
   .site-nav ul {
     position: fixed;
@@ -1136,25 +1136,9 @@ body.nav-locked .nav-backdrop { opacity: 1; pointer-events: auto; }
   .site-nav ul a.is-active::after { display: none; }
   .site-nav ul a.is-active { color: var(--pink); }
 
-  /* admin link → push to the bottom of the fullscreen menu */
-  .site-nav ul .admin-li {
-    margin-top: 28px;
-    margin-left: 0;
-  }
-  .site-nav ul .admin-link {
-    background: linear-gradient(95deg, #b8267a, #e8338e) !important;
-    color: #fff !important;
-    font-size: 18px !important;
-    letter-spacing: 3px !important;
-    padding: 14px 24px !important;
-    border-radius: 999px !important;
-    border-bottom: none !important;
-    box-shadow: 0 8px 18px rgba(232, 51, 142, 0.4) !important;
-  }
-
   /* hero */
   .hero { padding: 0 20px 0; }
-  .hero-inner { grid-template-columns: 1fr; gap: 8px; padding-top: 100px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 8px; padding-top: 70px; }
   .hero-copy {
     padding: 0;
     text-align: center;
@@ -1163,12 +1147,7 @@ body.nav-locked .nav-backdrop { opacity: 1; pointer-events: auto; }
     flex-direction: column;
     align-items: center;
   }
-  .hero-copy h1 {
-    text-align: center;
-    font-size: 30px;
-    white-space: nowrap;
-  }
-  .hero-copy h1 span { display: inline !important; }
+  .hero-copy h1 { text-align: center; font-size: 44px; }
   .hero-copy .sub { max-width: none; margin: 14px auto 0; font-size: 18px; }
   .hero-copy .cta-row { justify-content: center; margin-top: 18px; }
   .hero-copy .swirl-arrow { display: none; }
@@ -1241,7 +1220,7 @@ body.nav-locked .nav-backdrop { opacity: 1; pointer-events: auto; }
 }
 
 @media (max-width: 540px) {
-  .hero-copy h1 { font-size: 24px; }
+  .hero-copy h1 { font-size: 36px; }
   .hero-copy .sub { font-size: 16px; }
   .brush-btn { font-size: 14px; padding: 12px 26px; letter-spacing: 2px; }
   .features-lead h2 { font-size: 30px; }
@@ -1256,292 +1235,92 @@ body.nav-locked .nav-backdrop { opacity: 1; pointer-events: auto; }
 }
 
 /* ===========================================================
-   ADMIN PILL BUTTON IN NAV
+   FLOATING WHATSAPP STAR BUTTON
    =========================================================== */
-.site-nav .admin-li { margin-left: 12px; }
-.site-nav .admin-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px !important;
-  background: linear-gradient(95deg, #b8267a, #e8338e);
-  color: #fff !important;
-  border-radius: 999px;
-  font-size: 14px !important;
-  letter-spacing: 2px !important;
-  box-shadow: 0 6px 16px rgba(232, 51, 142, 0.35);
-  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-}
-.site-nav .admin-link::before { content: '✦'; font-size: 13px; }
-.site-nav .admin-link:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-  box-shadow: 0 10px 22px rgba(232, 51, 142, 0.5);
-  color: #fff !important;
-}
-.site-nav .admin-link.is-active::after,
-.site-nav .admin-link::after { display: none; }
-
-/* ===========================================================
-   AGENDA WIDGET (inside DISPONIBILIDAD)
-   =========================================================== */
-.agenda {
-  max-width: 740px;
-  margin: 40px auto 0;
-  background: rgba(255, 255, 255, 0.55);
-  border: 2px dashed rgba(184, 38, 122, 0.35);
-  border-radius: 22px;
-  padding: 36px 30px 30px;
-  text-align: left;
-  position: relative;
-  z-index: 1;
-}
-.ag-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  margin-bottom: 22px;
-}
-.ag-month {
-  font-family: 'Caveat Brush', cursive;
-  font-size: 38px;
-  color: #2c0a55;
-  text-transform: capitalize;
-  letter-spacing: 1px;
-  min-width: 240px;
-  text-align: center;
-}
-.ag-nav-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid rgba(184, 38, 122, 0.35);
-  background: rgba(255, 255, 255, 0.7);
-  color: var(--magenta);
-  font-size: 26px;
-  line-height: 1;
-  cursor: pointer;
-  transition: transform .2s ease, background .2s ease, color .2s ease;
-  font-family: inherit;
-}
-.ag-nav-btn:hover {
-  background: var(--magenta-hot);
-  color: #fff;
-  transform: scale(1.08);
-}
-
-.ag-legend {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-bottom: 18px;
-  font-family: 'Caveat', cursive;
-  font-size: 17px;
-  color: #4d2466;
-}
-.ag-leg { display: inline-flex; align-items: center; gap: 8px; }
-.ag-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
-}
-.ag-dot.ag-free  { background: #ffd6e6; box-shadow: 0 0 0 1px rgba(184,38,122,0.25); }
-.ag-dot.ag-busy  { background: var(--magenta-hot); }
-.ag-dot.ag-event { background: var(--c-violet); }
-
-.ag-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  margin-bottom: 22px;
-}
-.ag-hdr {
-  text-align: center;
-  font-family: 'Patrick Hand SC', cursive;
-  letter-spacing: 1.6px;
-  font-size: 12px;
-  color: #6e4ea8;
-  padding: 6px 0 4px;
-}
-.ag-day {
-  min-height: 60px;
-  border-radius: 14px;
-  border: 2px solid transparent;
-  background: #ffd6e6;
-  padding: 0;
-  cursor: pointer;
-  position: relative;
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, filter .15s ease;
-  display: grid;
-  place-items: center;
-}
-.ag-day:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.05);
-  box-shadow: 0 8px 16px rgba(184,38,122,0.25);
-}
-.ag-day.other { opacity: 0.35; pointer-events: none; background: rgba(255, 214, 230, 0.4); }
-.ag-day.selected {
-  border-color: var(--magenta);
-  box-shadow: 0 0 0 3px rgba(232,51,142,0.18);
-}
-
-/* state backgrounds — the day cell IS the colored chip */
-.ag-day.is-free  { background: #ffd6e6; }
-.ag-day.is-busy  { background: var(--magenta-hot); }
-.ag-day.is-event { background: var(--c-violet); }
-
-.ag-day-num {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 20px;
-  font-weight: 600;
-  color: #2c0a55;
-  line-height: 1;
-}
-.ag-day.is-busy  .ag-day-num,
-.ag-day.is-event .ag-day-num { color: #fff; }
-.ag-day.today {
-  outline: 2.5px solid #2c0a55;
-  outline-offset: -2.5px;
-}
-.ag-day.is-busy.today,
-.ag-day.is-event.today { outline-color: #fff; }
-
-.ag-detail {
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 14px;
-  padding: 18px 22px;
-  border: 1px solid rgba(184, 38, 122, 0.15);
-}
-.ag-detail-title {
-  font-family: 'Caveat Brush', cursive;
-  font-size: 26px;
-  color: #2c0a55;
-  margin-bottom: 8px;
-  text-transform: capitalize;
-}
-.ag-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Patrick Hand SC', cursive;
-  letter-spacing: 1.5px;
-  font-size: 12px;
-  padding: 5px 14px;
-  border-radius: 999px;
-  margin-bottom: 8px;
-}
-.ag-badge.ag-b-free  { background: #ffd6e6; color: #2c0a55; }
-.ag-badge.ag-b-busy  { background: var(--magenta-hot); color: #fff; }
-.ag-badge.ag-b-event { background: var(--c-violet); color: #fff; }
-.ag-ev-list { margin-top: 12px; }
-.ag-ev-row {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  padding: 10px 0;
-  border-bottom: 1px dashed rgba(110, 78, 168, 0.25);
-}
-.ag-ev-row:last-child { border-bottom: none; }
-.ag-ev-time {
-  font-family: 'Patrick Hand SC', cursive;
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: var(--magenta);
-  min-width: 56px;
-  padding-top: 3px;
-}
-.ag-ev-name {
-  font-family: 'Caveat', cursive;
-  font-size: 20px;
-  color: #2c0a55;
-  font-weight: 600;
-  line-height: 1.1;
-}
-.ag-ev-desc {
-  font-family: 'Caveat', cursive;
-  font-size: 17px;
-  color: #6e4ea8;
-  margin-top: 2px;
-  line-height: 1.25;
-}
-.ag-empty {
-  color: #6e4ea8;
-  font-family: 'Caveat', cursive;
-  font-size: 18px;
-}
-
-@media (max-width: 540px) {
-  .agenda { padding: 24px 16px 20px; }
-  .ag-month { font-size: 28px; min-width: 160px; }
-  .ag-nav-btn { width: 38px; height: 38px; font-size: 22px; }
-  .ag-day { min-height: 50px; padding: 6px 3px 12px; }
-  .ag-day-num { font-size: 15px; width: 22px; height: 22px; }
-  .ag-strip { left: 5px; right: 5px; }
-  .ag-detail-title { font-size: 22px; }
-}
-
-/* ===========================================================
-   WHATSAPP STAR BUTTON
-   =========================================================== */
-.wa-btn {
+.wa-fab {
   position: fixed;
-  bottom: 22px;
-  right: 22px;
-  width: 84px;
-  height: 84px;
+  bottom: 28px;
+  right: 28px;
+  width: 88px;
+  height: 88px;
   z-index: 60;
   display: grid;
   place-items: center;
   text-decoration: none;
-  filter: drop-shadow(0 8px 16px rgba(232,51,142,0.45));
-  animation: wa-float 4s ease-in-out infinite;
-  transition: filter .25s ease;
+  filter: drop-shadow(0 10px 18px rgba(232, 51, 142, 0.45));
+  animation: wa-bob 4.4s ease-in-out infinite;
 }
-.wa-btn-star {
+.wa-fab .wa-star {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  fill: #e8338e;
-  animation: wa-tilt 6s ease-in-out infinite;
-  transition: fill .3s ease;
+  fill: var(--magenta-hot);
+  transition: transform .35s cubic-bezier(.4,0,.2,1), fill .25s ease;
 }
-.wa-btn-logo {
+.wa-fab .wa-icon {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   color: #fff;
   z-index: 2;
-  animation: wa-beat 2.4s ease-in-out infinite;
+  transition: transform .25s ease;
 }
-.wa-btn:hover {
-  filter: drop-shadow(0 14px 26px rgba(232,51,142,0.7));
+.wa-fab::after {
+  /* pulse ring (square clip-path star to follow shape) */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--pink);
+  opacity: 0.55;
+  z-index: 0;
+  animation: wa-pulse 2.4s ease-out infinite;
+  pointer-events: none;
 }
-.wa-btn:hover .wa-btn-star {
-  fill: #ff7ab8;
+.wa-fab:hover .wa-star { transform: rotate(18deg) scale(1.06); fill: var(--pink); }
+.wa-fab:hover .wa-icon { transform: scale(1.08); }
+.wa-fab:active { transform: scale(0.95); }
+
+@keyframes wa-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-6px) rotate(-4deg); }
+}
+@keyframes wa-pulse {
+  0%   { transform: scale(0.85); opacity: 0.55; }
+  100% { transform: scale(1.45); opacity: 0; }
 }
 
-@keyframes wa-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-6px); }
+.wa-fab .wa-tip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  background: #fff;
+  color: #4d2466;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  padding: 8px 14px 7px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
 }
-@keyframes wa-tilt {
-  0%, 100% { transform: rotate(-4deg); }
-  50%      { transform: rotate(4deg); }
+.wa-fab .wa-tip::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 7px solid transparent;
+  border-left-color: #fff;
 }
-@keyframes wa-beat {
-  0%, 100% { transform: scale(1); }
-  8%       { transform: scale(1.18); }
-  16%      { transform: scale(0.95); }
-  24%      { transform: scale(1.12); }
-  32%      { transform: scale(1); }
-}
+.wa-fab:hover .wa-tip { opacity: 1; transform: translateY(-50%) translateX(0); }
 
 @media (max-width: 540px) {
-  .wa-btn { width: 70px; height: 70px; bottom: 16px; right: 16px; }
-  .wa-btn-logo { width: 26px; height: 26px; }
+  .wa-fab { width: 70px; height: 70px; bottom: 18px; right: 18px; }
+  .wa-fab .wa-icon { width: 28px; height: 28px; }
+  .wa-fab .wa-tip { display: none; }
 }
