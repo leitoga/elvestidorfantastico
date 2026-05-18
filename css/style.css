@@ -1233,3 +1233,94 @@ body.nav-locked .nav-backdrop { opacity: 1; pointer-events: auto; }
   .land-section.dark { padding-top: 80px; padding-bottom: 80px; }
   .magic-badge { width: 90px; height: 90px; font-size: 10px; bottom: 160px; }
 }
+
+/* ===========================================================
+   FLOATING WHATSAPP STAR BUTTON
+   =========================================================== */
+.wa-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 88px;
+  height: 88px;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  filter: drop-shadow(0 10px 18px rgba(232, 51, 142, 0.45));
+  animation: wa-bob 4.4s ease-in-out infinite;
+}
+.wa-fab .wa-star {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--magenta-hot);
+  transition: transform .35s cubic-bezier(.4,0,.2,1), fill .25s ease;
+}
+.wa-fab .wa-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  z-index: 2;
+  transition: transform .25s ease;
+}
+.wa-fab::after {
+  /* pulse ring (square clip-path star to follow shape) */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--pink);
+  opacity: 0.55;
+  z-index: 0;
+  animation: wa-pulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+.wa-fab:hover .wa-star { transform: rotate(18deg) scale(1.06); fill: var(--pink); }
+.wa-fab:hover .wa-icon { transform: scale(1.08); }
+.wa-fab:active { transform: scale(0.95); }
+
+@keyframes wa-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-6px) rotate(-4deg); }
+}
+@keyframes wa-pulse {
+  0%   { transform: scale(0.85); opacity: 0.55; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+.wa-fab .wa-tip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  background: #fff;
+  color: #4d2466;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  padding: 8px 14px 7px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+.wa-fab .wa-tip::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 7px solid transparent;
+  border-left-color: #fff;
+}
+.wa-fab:hover .wa-tip { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+@media (max-width: 540px) {
+  .wa-fab { width: 70px; height: 70px; bottom: 18px; right: 18px; }
+  .wa-fab .wa-icon { width: 28px; height: 28px; }
+  .wa-fab .wa-tip { display: none; }
+}
