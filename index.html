@@ -11,7 +11,7 @@
   <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
       <a href="#inicio" class="brand">
-        <img src="assets/logo.png" alt="El Vestidor Fantástico" />
+        <img src="assets/logo-negro.png" alt="El Vestidor Fantástico" />
       </a>
       <ul>
         <li><a href="#inicio" class="is-active" data-section="inicio">INICIO</a></li>
@@ -321,7 +321,7 @@
         </div>
       </div>
       <div class="footer-logo">
-        <img src="assets/logo.png" alt="El Vestidor Fantástico" />
+        <img src="assets/logo-blanco.png" alt="El Vestidor Fantástico" />
       </div>
     </div>
   </footer>
@@ -597,9 +597,30 @@
       if (nav.classList.contains('open')) close(); else open();
     });
     back && back.addEventListener('click', close);
-    nav.querySelectorAll('ul a').forEach(a => a.addEventListener('click', close));
     window.addEventListener('resize', () => { if (window.innerWidth > 960) close(); });
     window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+    // Smooth-scroll anchor handler that works with fixed nav + mobile menu.
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const wasOpen = nav.classList.contains('open');
+        close();
+        // wait for the menu transition + body unlock before scrolling
+        const doScroll = () => {
+          const navH = nav.offsetHeight;
+          const offset = window.innerWidth <= 960 ? navH + 20 : 40;
+          const y = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+          history.replaceState(null, '', href);
+        };
+        if (wasOpen) setTimeout(doScroll, 380); else doScroll();
+      });
+    });
   })();
 
   // ---------- Mouse parallax in hero ----------
